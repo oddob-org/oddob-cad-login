@@ -362,5 +362,9 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# 交付打包产物（可由 dist 目录重新压缩生成）
+# 交付打包产物：仓库只保留源码
+/dist/
+/dist2026/
+/dist2027/
+/distZcad/
 *.zip
