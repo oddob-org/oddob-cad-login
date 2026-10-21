@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:pu="https://opensource.panuon.com/wpf-ui">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/PaunonColorLight.xaml" />
+        <ResourceDictionary>
+            <FontFamily x:Key="IconFont">pack://application:,,,/Oddob.Service;component/Resources/#iconfont</FontFamily>
+        </ResourceDictionary>
+
+        <!--引用style-->
+        <ResourceDictionary
+            Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/Styles/ButtonStyle.xaml" />
+        <ResourceDictionary
+            Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/Styles/LabelStyle.xaml" />
+        <ResourceDictionary
+            Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/Styles/TextBoxStyle.xaml" />
+        <ResourceDictionary
+            Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/Styles/CheckBoxStyle.xaml" />
+        <ResourceDictionary
+            Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/Styles/NumberInputStyle.xaml" />
+        <ResourceDictionary
+            Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/Styles/PasswordBoxStyle.xaml" />
+        <ResourceDictionary
+            Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/Styles/SwitchStyle.xaml" />
+        <ResourceDictionary
+            Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/Styles/SeparatorStyle.xaml" />
+
+
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <!--默认样式引用-->
+    <Style TargetType="Label" BasedOn="{StaticResource LabelDefault}" />
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonDefault}" />
+    <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxDefault}" />
+    <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxDefault}" />
+    <Style TargetType="pu:NumberInput" BasedOn="{StaticResource NumberInputDefault}" />
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource PasswordBoxDefault}" />
+    <Style TargetType="pu:Switch" BasedOn="{StaticResource SwitchDefault}" />
+    <Style TargetType="Separator" BasedOn="{StaticResource SeparatorDefault}" />
+
+</ResourceDictionary>

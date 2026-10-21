@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+        <!-- 中望 CAD 托管 API 基于 .NET Framework 4.7，只能用 net48 -->
+        <TargetFramework>net48</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWpf>true</UseWpf>
+        <UseWindowsForms>true</UseWindowsForms>
+        <AssemblyName>Oddob.Zcad</AssemblyName>
+        <RootNamespace>Oddob.Acad</RootNamespace>
+        <DefineConstants>$(DefineConstants);ZWCAD</DefineConstants>
+        <!-- 中望 SDK 根目录，可在命令行覆盖：-p:ZcadSdkRoot=D:\SDK\ZCAD\2025 -->
+        <ZcadSdkRoot Condition="'$(ZcadSdkRoot)' == ''">D:\SDK\ZCAD\2026</ZcadSdkRoot>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <DebugType>full</DebugType>
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DebugType>none</DebugType>
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- 复用 AutoCAD 插件的全部源码，差异通过 ZWCAD 常量隔离 -->
+        <Compile Include="..\Oddob.Acad\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- 由中望 CAD 宿主提供，不能随包复制，否则会与宿主版本冲突 -->
+        <Reference Include="ZwManaged">
+            <HintPath>$(ZcadSdkRoot)\inc\ZwManaged.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="ZwDatabaseMgd">
+            <HintPath>$(ZcadSdkRoot)\inc\ZwDatabaseMgd.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="Microsoft.CSharp" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Oddob.Service\Oddob.Service.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Costura.Fody" Version="6.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive; compile</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>

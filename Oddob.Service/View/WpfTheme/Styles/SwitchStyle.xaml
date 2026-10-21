@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:pu="https://opensource.panuon.com/wpf-ui">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/PaunonColorLight.xaml" />
+        <pu:StyleDictionary Includes="All"></pu:StyleDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--默认-->
+    <Style x:Key="SwitchDefault" TargetType="pu:Switch">
+        <Setter Property="CheckedBackground"
+                Value="{DynamicResource PrimaryBrush}" />
+        <Setter Property="Height"
+                Value="{DynamicResource BodyHeight}" />
+        <Setter Property="BoxHeight"
+                Value="20" />
+        <Setter Property="BoxWidth"
+                Value="35" />
+        <Setter Property="Padding"
+                Value="10,0,0,0" />
+    </Style>
+
+</ResourceDictionary>

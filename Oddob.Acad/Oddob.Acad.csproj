@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+        <TargetFrameworks>net48;net8.0-windows;net10.0-windows</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <UseWpf>true</UseWpf>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)' != 'net48'">
+        <!-- AutoCAD 不是 .NET 宿主，不会按 deps.json 解析依赖，需把包依赖一并复制到输出目录 -->
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DebugType>full</DebugType>
+      <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugType>none</DebugType>
+      <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+    
+    <ItemGroup Condition="'$(TargetFramework)' == 'NET48'">
+        <PackageReference Include="AutoCAD.NET" Version="20.1.0"  ExcludeAssets="runtime"/>
+        <Reference Include="Microsoft.CSharp"/>
+    </ItemGroup>
+    
+    <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+        <PackageReference Include="AutoCAD.NET" Version="25.0.1" ExcludeAssets="runtime"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-windows'">
+        <PackageReference Include="AutoCAD.NET" Version="26.0.0" ExcludeAssets="runtime"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Oddob.Service\Oddob.Service.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Reference Include="System.Collections" Condition="'$(TargetFramework)' == 'net48'">
+        <HintPath>C:\Users\Administrator\.nuget\packages\microsoft.netframework.referenceassemblies.net48\1.0.3\build\.NETFramework\v4.8\Facades\System.Collections.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="Costura.Fody" Version="6.0.0" Condition="'$(TargetFramework)' == 'net48'">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive; compile</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+</Project>

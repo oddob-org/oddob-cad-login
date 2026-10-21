@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:pu="https://opensource.panuon.com/wpf-ui">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/PaunonColorLight.xaml" />
+        <pu:StyleDictionary Includes="All" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <!--默认按钮-->
+    <Style x:Key="NumberInputDefault" TargetType="pu:NumberInput">
+        <Setter Property="FocusedBorderBrush"
+                Value="#0099FF" />
+        <Setter Property="FocusedShadowColor"
+                Value="#0099FF" />
+        <Setter Property="CornerRadius"
+                Value="{StaticResource SmallCorner}" />
+        <Setter Property="WatermarkForeground"
+                Value="{DynamicResource LightForegroundBrush}" />
+        <Setter Property="FocusedWatermarkForeground"
+                Value="#AAAAAA" />
+        <Setter Property="Height"
+                Value="{DynamicResource BodyHeight}" />
+        <Setter Property="Padding"
+                Value="10,0" />
+        <Setter Property="BorderThickness"
+                Value="{DynamicResource BorderThickness}"/>
+        <Setter Property="Background"
+                Value="{DynamicResource BackgroundBrush}" />
+    </Style>
+</ResourceDictionary>

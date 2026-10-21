@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:pu="https://opensource.panuon.com/wpf-ui">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Oddob.Service;component/View/WpfTheme/PaunonColorLight.xaml" />
+        <pu:StyleDictionary Includes="All" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <!--默认按钮-->
+    <Style x:Key="ButtonDefault" TargetType="Button" BasedOn="{StaticResource {x:Static pu:StyleKeys.ButtonStyle}}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="{DynamicResource BodyHeight}" />
+        <Setter Property="pu:ButtonHelper.CornerRadius" Value="{DynamicResource SmallCorner}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BorderThickness}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"></Setter>
+    </Style>
+    <Style x:Key="ButtonPrimary" TargetType="Button" BasedOn="{StaticResource ButtonDefault}">
+        <Setter Property="Foreground" Value="{DynamicResource BackgroundBrush}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+    </Style>
+</ResourceDictionary>

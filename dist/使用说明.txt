@@ -1,0 +1,69 @@
+Oddob AutoCAD 插件 —— 测试交付包 使用说明
+================================================
+
+一、环境要求
+------------------------------------------------
+- AutoCAD 2016 及以上（本插件基于 AutoCAD.NET 20.1.0 == AutoCAD 2016 API 编译）
+- 64 位 CAD（插件 PlatformTarget = x64，不可用于 32 位 CAD）
+- .NET Framework 4.8 运行环境
+
+二、加载方式（二选一）
+------------------------------------------------
+方式 A：手动 NETLOAD（临时测试，重启 CAD 后失效）
+  1. 打开 AutoCAD。
+  2. 命令行输入 NETLOAD 回车。
+  3. 在弹出的文件对话框中选择本目录下的 Oddob.Acad.dll。
+  4. 加载成功后，命令行输入命令 OddobLogin 回车，即弹出登录窗口。
+
+方式 B：注册受信任路径 + 自动加载（长期测试）
+  1. 先在 CAD 中执行 NETLOAD 加载一次 Oddob.Acad.dll。
+  2. CAD 会自动把本目录加入“受信任路径”。
+  3. 如需开机自动加载，可把本目录加入 acad.lsp / acaddoc.lsp 中 NETLOAD 调用。
+
+三、可用入口
+------------------------------------------------
+- 命令：OddobLogin
+  作用：弹出版权登录窗口（Acap.ShowModalWindow）。
+- LISP 函数：(Oddob_Login)
+  作用：与 OddobLogin 等效，供 LISP 脚本调用。
+
+四、网络配置
+------------------------------------------------
+- 配置文件 config.json 位于本目录下（与 Oddob.Service.dll 同级）。
+- 内容：
+    {
+      "Host": "https://oddob.com",
+      "Port": ""
+    }
+- 说明：
+  * Host：后端服务地址，默认为 https://oddob.com。
+  * Port：端口，留空表示使用默认端口（http 80 / https 443）。
+  * 若删除 config.json，程序会使用内置默认值（即上面的地址），仍可正常使用。
+- 涉及的接口（相对 Host）：
+    图形验证码 /api/open/verifyCode
+    手机验证码 /api/open/getPhoneCode
+    登录       /api/open/login
+    刷新Token  /api/open/getToken
+    用户信息   /api/open/userInfo
+
+五、重要注意事项
+------------------------------------------------
+1. 必须整个 dist 目录一起拷贝使用，不能只拷贝 Oddob.Acad.dll！
+   原因：程序集依赖（Oddob.Service.dll、Panuon.WPF.UI.dll 等）以独立 DLL 形式随包发布，
+   只有 System.Runtime.CompilerServices.Unsafe 被 Costura 嵌入到 Oddob.Acad.dll 内。
+   缺少同目录依赖 DLL 会加载失败。
+
+2. 本包为 Release 版本（DebugType=none，无 pdb）。如需排查异常，请构建 Debug 版本。
+
+3. 用户设置与缓存写入 %LocalAppData%\Oddob\Settings 目录（首次运行自动创建）。
+
+六、测试重点（建议）
+------------------------------------------------
+- NETLOAD 是否成功、OddobLogin 命令是否弹出窗口。
+- 登录窗口左侧静态图片是否正常显示（Resources\login-left.png 已随 Oddob.Service.dll 打包）。
+- 图形验证码 / 手机验证码是否正常拉取。
+- 登录、刷新 Token、获取用户信息流程是否通畅。
+
+------------------------------------------------
+生成时间：请以实际构建时间为准
+配置：Release | net48 | x64

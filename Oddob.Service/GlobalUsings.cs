@@ -1,0 +1,33 @@
+// global using 指令
+
+global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel;
+global using System.Globalization;
+global using System.IO;
+global using System.Linq;
+global using System.Net.Http;
+global using System.Net.Http.Headers;
+global using System.Reflection;
+global using System.Text;
+global using System.Threading.Tasks;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Data;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using CommunityToolkit.Mvvm.Messaging;
+global using DYH.CAD.Extensions;
+global using DYH.Extensions.DependencyInjection;
+global using Newtonsoft.Json;
+global using Oddob.Service.Constant;
+global using Oddob.Service.Model.Dto;
+global using Oddob.Service.Model.Models;
+global using Oddob.Service.Model.Settings;
+global using Oddob.Service.Service.Interface;
+global using Oddob.Service.Service.Interface.Account;
+global using Oddob.Service.Service.Interface.Component;
+global using Oddob.Service.Tools;
+global using Oddob.Service.Tools.Request;
+global using Binding = System.Windows.Data.Binding;
+global using Timer = System.Windows.Forms.Timer;
